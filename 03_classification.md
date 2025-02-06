@@ -150,10 +150,19 @@ X_train, X_test, y_train, y_test = X[:60000], X[60000:], y[:60000], y[60000:]
 
 # Training a Binary Classifier
 
+
+Let's consider a **binary classifier**: the **5-detector**, which detects if the digit is a 5 or not.
+
+Let's compute the true/false labels for it from the labels of the full classifier.
+
 ```python
 y_train_5 = (y_train == '5')  # True for all 5s, False for all other digits
 y_test_5 = (y_test == '5')
 ```
+
+Let's use `SGDClassifier`: linear classifiers (SVM, logistic regression, etc.) with SGD training.
+Calling `fit(X,y)` fits a linear model with Stochastic Gradient Descent.
+The model it fits can be controlled with the **`loss`** parameter; by default, it is set to `'hinge'`, which fits a linear support vector machine (SVM). Another value could be `loss='perceptron'`.
 
 ```python
 from sklearn.linear_model import SGDClassifier
